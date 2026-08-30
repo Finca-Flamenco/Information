@@ -73,26 +73,47 @@
   nav button {
     font-family: 'Jost', sans-serif;
     font-size: 10px;
-    font-weight: 500;
+    font-weight: 600;
     background: transparent;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     min-width: 70px;
-    padding: 8px 5px 7px;
+    padding: 6px 4px 7px;
     cursor: pointer;
     color: var(--azul);
     flex: 1 0 70px;
     transition: background .2s ease, color .2s ease, transform .2s ease;
   }
-  nav button::before {
-    content: attr(data-icon);
-    display: block;
-    font-size: 18px;
-    line-height: 1;
-    margin-bottom: 5px;
+  .nav-icon {
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 5px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: rgba(27,74,71,.10);
+    color: var(--azul);
+    border: 1px solid rgba(27,74,71,.18);
+    transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+  }
+  .nav-icon svg {
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
   nav button:active { transform: scale(.96); }
-  nav button.active { color: var(--terra); background: rgba(212,177,94,.15); }
+  nav button.active { color: var(--terra); background: rgba(212,177,94,.10); }
+  nav button.active .nav-icon {
+    color: var(--azul);
+    background: var(--ocre);
+    border-color: var(--ocre);
+    box-shadow: 0 3px 10px rgba(184,145,47,.22);
+    transform: translateY(-1px);
+  }
   main { padding: 20px; }
   section { display: none; }
   section.active { display: block; animation: fade 0.25s ease; }
@@ -200,6 +221,25 @@
   .stat-box .val { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; }
   .stat-box .lab { font-size: 10px; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.3px; margin-top: 2px; }
 
+  .forecast-card { margin-bottom:16px; }
+  .forecast-card h3 { margin-bottom:12px; }
+  .forecast-grid {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:9px;
+  }
+  .forecast-item {
+    background:rgba(233,228,214,.55);
+    border:1px solid var(--crema);
+    border-radius:10px;
+    padding:12px 10px;
+    text-align:center;
+  }
+  .forecast-item .icon { font-size:18px; line-height:1; margin-bottom:5px; }
+  .forecast-item .value { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:var(--azul); line-height:1.1; }
+  .forecast-item .label { font-size:10px; color:var(--text); opacity:.78; text-transform:uppercase; letter-spacing:.35px; margin-top:3px; }
+  .today-section-title { margin-top:26px; }
+
   .quick-actions { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:16px; }
   .quick-action { display:flex; align-items:center; justify-content:center; gap:8px; text-decoration:none; border-radius:12px; padding:12px 10px; background:#fff; border:1px solid var(--crema); color:var(--azul); font-size:13px; font-weight:600; }
   .quick-action.primary { background:var(--terra); color:#fff; border-color:var(--terra); }
@@ -267,13 +307,13 @@
 </header>
 
 <nav>
-  <button class="active" data-tab="today" data-icon="☀️">Today</button>
-  <button data-tab="regels" data-icon="⌂">Rules</button>
-  <button data-tab="airco" data-icon="❄️">Climate</button>
-  <button data-tab="wifi" data-icon="⌁">WiFi</button>
-  <button data-tab="tv" data-icon="▣">TV</button>
-  <button data-tab="activiteiten" data-icon="✦">Explore</button>
-  <button data-tab="nood" data-icon="✚">Help</button>
+  <button class="active" data-tab="today" aria-label="Today"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.5 1.5M17.6 17.6l1.5 1.5M2 12h2M20 12h2M4.9 19.1l1.5-1.5M17.6 6.4l1.5-1.5"/></svg></span>Today</button>
+  <button data-tab="regels" aria-label="Rules"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><circle cx="12" cy="12.2" r=".8" fill="currentColor" stroke="none"/><path d="M12 15v2.7"/></svg></span>Rules</button>
+  <button data-tab="airco" aria-label="Climate"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0Z"/><path d="M12 11v6"/><path d="M18.5 5.5v5M16 8h5"/></svg></span>Climate</button>
+  <button data-tab="wifi" aria-label="WiFi"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M5 9.5a10.5 10.5 0 0 1 14 0"/><path d="M8 13a6 6 0 0 1 8 0"/><path d="M10.8 16.3a2 2 0 0 1 2.4 0"/><circle cx="12" cy="19" r=".7" fill="currentColor" stroke="none"/></svg></span>WiFi</button>
+  <button data-tab="tv" aria-label="TV"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span>TV</button>
+  <button data-tab="activiteiten" aria-label="Explore"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>Explore</button>
+  <button data-tab="nood" aria-label="Help"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M7.2 3.5 10 7.7 8.2 9.5c1.3 2.7 3.6 5 6.3 6.3l1.8-1.8 4.2 2.8c.5.3.7.9.5 1.4-.5 1.3-1.8 2.3-3.3 2.3C10.4 20.5 3.5 13.6 3.5 6.3c0-1.5 1-2.8 2.3-3.3.5-.2 1.1 0 1.4.5Z"/></svg></span>Help</button>
 </nav>
 
 <main>
@@ -297,6 +337,15 @@
         <div class="lab">Sea, °C</div>
       </div>
     </div>
+    <div class="card forecast-card">
+      <h3>Today's forecast</h3>
+      <div class="forecast-grid">
+        <div class="forecast-item"><div class="icon">🌡️</div><div class="value" id="wx-max-temp">…</div><div class="label">Expected high</div></div>
+        <div class="forecast-item"><div class="icon">☀️</div><div class="value" id="wx-max-uv">…</div><div class="label">Maximum UV</div></div>
+        <div class="forecast-item"><div class="icon">🌅</div><div class="value" id="wx-sunrise">…</div><div class="label">Sunrise</div></div>
+        <div class="forecast-item"><div class="icon">🌇</div><div class="value" id="wx-sunset">…</div><div class="label">Sunset</div></div>
+      </div>
+    </div>
     <div class="quick-actions">
       <button class="quick-action" type="button" data-open-tab="wifi">⌁ WiFi</button>
       <a class="quick-action primary" href="https://wa.me/34603932496?text=Hello%20Finca%20Flamenco%2C%20I%20have%20a%20question%20during%20my%20stay." target="_blank" rel="noopener">WhatsApp us</a>
@@ -308,6 +357,23 @@
     <div class="card">
       <h3>Tip for the day</h3>
       <p>High UV readings (6 and above) are common here — use sunscreen and seek shade around midday, especially at the pool.</p>
+    </div>
+    <h2 class="today-section-title">What's on · September 2026</h2>
+    <p class="explore-intro">A few events and markets that may be worth planning into your stay this month.</p>
+    <div class="card event-card"><div class="event-place">4 – 8 September · Fuengirola (Los Boliches)</div><div class="event-date">Feria de Los Boliches</div><p>The vibrant neighbourhood fair of Los Boliches, with traditional daytime celebrations, live music, dancing, casetas, and seaside festivities.</p></div>
+    <div class="card event-card"><div class="event-place">8 – 14 September · Álora</div><div class="event-date">Romería de la Virgen de Flores</div><p>Álora celebrates its patron saint with a traditional pilgrimage to the sanctuary, horse parades, music, and a festive outdoor atmosphere.</p></div>
+    <div class="card event-card"><div class="event-place">5 – 10 September · Mijas Pueblo</div><div class="event-date">Feria de Mijas Pueblo</div><p>The annual village fair honouring the Virgen de la Peña, with processions, flamenco, live music, and local food.</p></div>
+    <div class="card event-card"><div class="event-place">11 – 12 September · Guaro</div><div class="event-date">Luna Mora</div><p>An enchanting festival lighting up the historic white village after dark with thousands of candles, Andalusian-Sufi music, and street markets.</p></div>
+    <div class="card event-card"><div class="event-place">18 – 21 September · Torrox</div><div class="event-date">Torrox Oktoberfest</div><p>A lively coastal celebration with traditional German beer, hearty food, music, and a festive beer-tent atmosphere.</p></div>
+    <div class="card event-card"><div class="event-place">20 September · Torremolinos</div><div class="event-date">San Miguel pilgrimage (Romería)</div><p>A grand traditional pilgrimage with Andalusian dress, horses and decorated carts heading to the pine forests of Los Manantiales.</p></div>
+    <div class="card event-card"><div class="event-place">25 – 29 September · Torremolinos</div><div class="event-date">Feria de San Miguel</div><p>Torremolinos' major annual town fair, with daytime feria culture, evening casetas, concerts, funfair attractions and dancing.</p></div>
+    <h2 style="margin-top:24px;">Weekly markets (9:00 – 14:00)</h2>
+    <div class="card">
+      <div class="market-day"><span class="day">Tuesday</span><span>Fuengirola — large general market (Recinto Ferial)</span></div>
+      <div class="market-day"><span class="day">Wednesday</span><span>La Cala de Mijas — local market, fresh produce</span></div>
+      <div class="market-day"><span class="day">Thursday</span><span>Torremolinos — general market (Recinto Ferial)</span></div>
+      <div class="market-day"><span class="day">Saturday</span><span>Fuengirola — large flea market / Rastro</span></div>
+      <div class="market-day"><span class="day">Sunday</span><span>Coín (La Trocha), Torremolinos (flea market), Málaga (Palacio de Ferias)</span></div>
     </div>
   </section>
 
@@ -456,22 +522,6 @@
     <div id="explore-nature" class="explore-panel"><article class="recommendation-card"><img src="https://static.wixstatic.com/media/nsplsh_3476683246385772347845~mv2_d_3024_4032_s_4_2.jpg/v1/fill/w_367%2Ch_489%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/nsplsh_3476683246385772347845~mv2_d_3024_4032_s_4_2.jpg" alt="Caminito del Rey" loading="lazy" referrerpolicy="no-referrer"><div class="rec-body"><div class="rec-meta">✦ Finca Flamenco recommends</div><h3>Caminito del Rey</h3><p>A spectacular walkway through the El Chorro gorge, following steep cliffs and high bridges above the river. One of our standout recommendations for an adventurous day.</p><div class="rec-actions"><a class="rec-link" href="https://www.google.com/maps/search/?api=1&query=Caminito+del+Rey+Ardales+Malaga" target="_blank" rel="noopener">Open in Maps →</a></div></div></article><article class="recommendation-card rec-text-card"><div class="rec-meta">✦ Finca Flamenco recommends</div><h3>El Torcal</h3><p>A surreal limestone landscape near Antequera with winding walking routes and panoramic mountain views — ideal for hikers and nature lovers.</p><div class="rec-actions"><a class="rec-link" href="https://www.google.com/maps/search/?api=1&query=El+Torcal+de+Antequera+Malaga" target="_blank" rel="noopener">Open in Maps →</a></div></article><article class="recommendation-card"><img src="https://static.wixstatic.com/media/0ce571_ac078c5ec2fa447eb52e4d08ba5c2ea9~mv2.jpg/v1/fill/w_334%2Ch_445%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/0ce571_ac078c5ec2fa447eb52e4d08ba5c2ea9~mv2.jpg" alt="Río Chíllar" loading="lazy" referrerpolicy="no-referrer"><div class="rec-body"><div class="rec-meta">✦ Finca Flamenco recommends</div><h3>Río Chíllar</h3><p>A refreshing adventure near Nerja where the route follows a river through a natural gorge — walking and water in one outing.</p><div class="rec-actions"><a class="rec-link" href="https://www.google.com/maps/search/?api=1&query=Rio+Chillar+Nerja+Malaga" target="_blank" rel="noopener">Open in Maps →</a></div></div></article><article class="recommendation-card"><img src="https://static.wixstatic.com/media/0ce571_1ccb393dbb534fab8b8f57c795fa5dcf~mv2.jpg/v1/fill/w_446%2Ch_595%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/0ce571_1ccb393dbb534fab8b8f57c795fa5dcf~mv2.jpg" alt="Nerja Caves" loading="lazy" referrerpolicy="no-referrer"><div class="rec-body"><div class="rec-meta">✦ Finca Flamenco recommends</div><h3>Nerja Caves</h3><p>An impressive underground world of vast chambers, stalactites and stalagmites, discovered in 1959. Easy to combine with Nerja and the coast.</p><div class="rec-actions"><a class="rec-link" href="https://www.google.com/maps/search/?api=1&query=Cueva+de+Nerja+Malaga" target="_blank" rel="noopener">Open in Maps →</a></div></div></article><article class="recommendation-card"><img src="https://static.wixstatic.com/media/0ce571_4e804f7df22b4318a3175355463fa0c9~mv2.jpg/v1/fill/w_488%2Ch_275%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/0ce571_4e804f7df22b4318a3175355463fa0c9~mv2.jpg" alt="Sierra Nevada" loading="lazy" referrerpolicy="no-referrer"><div class="rec-body"><div class="rec-meta">✦ Finca Flamenco recommends</div><h3>Sierra Nevada</h3><p>High mountain scenery with snow in winter and green valleys in summer. Hiking, mountain activities and beautiful viewpoints make it worth the longer drive.</p><div class="rec-actions"><a class="rec-link" href="https://www.google.com/maps/search/?api=1&query=Sierra+Nevada+Granada+Spain" target="_blank" rel="noopener">Open in Maps →</a></div></div></article><article class="recommendation-card"><img src="https://static.wixstatic.com/media/nsplsh_89d954413bba4067ab9e34fc8cfd5785~mv2.jpg/v1/fill/w_488%2Ch_325%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/nsplsh_89d954413bba4067ab9e34fc8cfd5785~mv2.jpg" alt="Sierra de las Nieves" loading="lazy" referrerpolicy="no-referrer"><div class="rec-body"><div class="rec-meta">✦ Finca Flamenco recommends</div><h3>Sierra de las Nieves</h3><p>A rugged mountain landscape with forests, rivers, viewpoints and white villages — a quieter choice for guests looking for unspoilt Andalusian nature.</p><div class="rec-actions"><a class="rec-link" href="https://www.google.com/maps/search/?api=1&query=Sierra+de+las+Nieves+Malaga" target="_blank" rel="noopener">Open in Maps →</a></div></div></article><div class="explore-source"><a href="https://www.finca-flamenco.com/natuur" target="_blank" rel="noopener">See our full nature recommendations →</a></div></div>
     <div id="explore-beaches" class="explore-panel"><article class="recommendation-card"><img src="https://static.wixstatic.com/media/nsplsh_fe4d20dc418f4e04b5eb3bef4ff36698~mv2.jpg/v1/fill/w_261%2Ch_348%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/nsplsh_fe4d20dc418f4e04b5eb3bef4ff36698~mv2.jpg" alt="La Malagueta · Málaga" loading="lazy" referrerpolicy="no-referrer"><div class="rec-body"><div class="rec-meta">✦ Finca Flamenco recommends</div><h3>La Malagueta · Málaga</h3><p>A lively city beach close to Málaga’s centre, ideal if you want to combine sightseeing, lunch and a few hours by the Mediterranean.</p><div class="rec-actions"><a class="rec-link" href="https://www.google.com/maps/search/?api=1&query=Playa+de+la+Malagueta+Malaga" target="_blank" rel="noopener">Open in Maps →</a></div></div></article><article class="recommendation-card"><img src="https://static.wixstatic.com/media/0ce571_cce6306dee1f434abc864b355db519bf~mv2.jpeg/v1/fill/w_488%2Ch_306%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/0ce571_cce6306dee1f434abc864b355db519bf~mv2.jpeg" alt="La Carihuela · Torremolinos" loading="lazy" referrerpolicy="no-referrer"><div class="rec-body"><div class="rec-meta">✦ Finca Flamenco recommends</div><h3>La Carihuela · Torremolinos</h3><p>Golden sand, a long promenade and a huge choice of beach bars and restaurants. Great for swimming, strolling and a relaxed seaside lunch.</p><div class="rec-actions"><a class="rec-link" href="https://www.google.com/maps/search/?api=1&query=Playa+de+la+Carihuela+Torremolinos" target="_blank" rel="noopener">Open in Maps →</a></div></div></article><article class="recommendation-card"><img src="https://static.wixstatic.com/media/0ce571_5aba74b2f1784b8f9b4418d2d7dc292d~mv2.jpeg/v1/fill/w_488%2Ch_274%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/0ce571_5aba74b2f1784b8f9b4418d2d7dc292d~mv2.jpeg" alt="El Bajondillo · Torremolinos" loading="lazy" referrerpolicy="no-referrer"><div class="rec-body"><div class="rec-meta">✦ Finca Flamenco recommends</div><h3>El Bajondillo · Torremolinos</h3><p>A broad, popular beach right below the town centre, with loungers and plenty of facilities. At one end you’ll find the well-known Eden Beach area.</p><div class="rec-actions"><a class="rec-link" href="https://www.google.com/maps/search/?api=1&query=Playa+del+Bajondillo+Torremolinos" target="_blank" rel="noopener">Open in Maps →</a></div></div></article><article class="recommendation-card"><img src="https://static.wixstatic.com/media/0ce571_c8561be5b3b34c06a34783d986f49021~mv2.jpeg/v1/fill/w_488%2Ch_295%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/0ce571_c8561be5b3b34c06a34783d986f49021~mv2.jpeg" alt="Burriana · Nerja" loading="lazy" referrerpolicy="no-referrer"><div class="rec-body"><div class="rec-meta">✦ Finca Flamenco recommends</div><h3>Burriana · Nerja</h3><p>One of Nerja’s best-known beaches, with clear water, watersports and a promenade full of seafood restaurants and Mediterranean terraces.</p><div class="rec-actions"><a class="rec-link" href="https://www.google.com/maps/search/?api=1&query=Playa+de+Burriana+Nerja" target="_blank" rel="noopener">Open in Maps →</a></div></div></article><article class="recommendation-card"><img src="https://static.wixstatic.com/media/0ce571_53001adee6944c19904a3d3974662730~mv2.jpg/v1/fill/w_488%2Ch_325%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/0ce571_53001adee6944c19904a3d3974662730~mv2.jpg" alt="Cabopino · Marbella" loading="lazy" referrerpolicy="no-referrer"><div class="rec-body"><div class="rec-meta">✦ Finca Flamenco recommends</div><h3>Cabopino · Marbella</h3><p>Known for its dunes, pine trees and naturist section. A relaxed, more natural beach setting with a sense of space and privacy.</p><div class="rec-actions"><a class="rec-link" href="https://www.google.com/maps/search/?api=1&query=Playa+de+Cabopino+Marbella" target="_blank" rel="noopener">Open in Maps →</a></div></div></article><article class="recommendation-card"><img src="https://static.wixstatic.com/media/nsplsh_d58cc974e85945b59016561b3bdf0734~mv2.jpg/v1/fill/w_488%2Ch_326%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/nsplsh_d58cc974e85945b59016561b3bdf0734~mv2.jpg" alt="Nerja’s small coves" loading="lazy" referrerpolicy="no-referrer"><div class="rec-body"><div class="rec-meta">✦ Finca Flamenco recommends</div><h3>Nerja’s small coves</h3><p>For a quieter coast day, explore the smaller bays around Nerja, tucked between dramatic rock formations and clear blue Mediterranean water.</p><div class="rec-actions"><a class="rec-link" href="https://www.google.com/maps/search/?api=1&query=Calas+Nerja+Malaga" target="_blank" rel="noopener">Open in Maps →</a></div></div></article><div class="explore-source"><a href="https://www.finca-flamenco.com/stranden" target="_blank" rel="noopener">See our full beach recommendations →</a></div></div>
 
-    <h2 style="margin-top:28px;">What's on · September 2026</h2>
-    <div class="card event-card"><div class="event-place">4 – 8 September · Fuengirola (Los Boliches)</div><div class="event-date">Feria de Los Boliches</div><p>The vibrant neighbourhood fair of Los Boliches, with traditional daytime celebrations, live music, dancing, casetas, and seaside festivities.</p></div>
-    <div class="card event-card"><div class="event-place">8 – 14 September · Álora</div><div class="event-date">Romería de la Virgen de Flores</div><p>Álora celebrates its patron saint with a traditional pilgrimage to the sanctuary, horse parades, music, and a festive outdoor atmosphere.</p></div>
-    <div class="card event-card"><div class="event-place">5 – 10 September · Mijas Pueblo</div><div class="event-date">Feria de Mijas Pueblo</div><p>The annual village fair honouring the Virgen de la Peña, with processions, flamenco, live music, and local food.</p></div>
-    <div class="card event-card"><div class="event-place">11 – 12 September · Guaro</div><div class="event-date">Luna Mora</div><p>An enchanting festival lighting up the historic white village after dark with thousands of candles, Andalusian-Sufi music, and street markets.</p></div>
-    <div class="card event-card"><div class="event-place">18 – 21 September · Torrox</div><div class="event-date">Torrox Oktoberfest</div><p>A lively coastal celebration with traditional German beer, hearty food, music, and a festive beer-tent atmosphere.</p></div>
-    <div class="card event-card"><div class="event-place">20 September · Torremolinos</div><div class="event-date">San Miguel pilgrimage (Romería)</div><p>A grand traditional pilgrimage with Andalusian dress, horses and decorated carts heading to the pine forests of Los Manantiales.</p></div>
-    <div class="card event-card"><div class="event-place">25 – 29 September · Torremolinos</div><div class="event-date">Feria de San Miguel</div><p>Torremolinos' major annual town fair, with daytime feria culture, evening casetas, concerts, funfair attractions and dancing.</p></div>
-    <h2 style="margin-top:24px;">Weekly markets (9:00 – 14:00)</h2>
-    <div class="card">
-      <div class="market-day"><span class="day">Tuesday</span><span>Fuengirola — large general market (Recinto Ferial)</span></div>
-      <div class="market-day"><span class="day">Wednesday</span><span>La Cala de Mijas — local market, fresh produce</span></div>
-      <div class="market-day"><span class="day">Thursday</span><span>Torremolinos — general market (Recinto Ferial)</span></div>
-      <div class="market-day"><span class="day">Saturday</span><span>Fuengirola — large flea market / Rastro</span></div>
-      <div class="market-day"><span class="day">Sunday</span><span>Coín (La Trocha), Torremolinos (flea market), Málaga (Palacio de Ferias)</span></div>
-    </div>
   </section>
 
   <section id="nood">
@@ -608,7 +658,7 @@
 
   async function loadWeather() {
     try {
-      const wxUrl = `https://api.open-meteo.com/v1/forecast?latitude=${PIZARRA_LAT}&longitude=${PIZARRA_LON}&hourly=temperature_2m,uv_index&timezone=Europe%2FMadrid`;
+      const wxUrl = `https://api.open-meteo.com/v1/forecast?latitude=${PIZARRA_LAT}&longitude=${PIZARRA_LON}&hourly=temperature_2m,uv_index&daily=temperature_2m_max,uv_index_max,sunrise,sunset&timezone=Europe%2FMadrid&forecast_days=2`;
       const wxRes = await fetch(wxUrl);
       const wx = await wxRes.json();
       const idx = closestHourIndex(wx.hourly.time);
@@ -616,9 +666,24 @@
       const uv = wx.hourly.uv_index[idx];
       document.getElementById('wx-temp').textContent = Math.round(temp) + '°';
       document.getElementById('wx-uv').textContent = Math.round(uv);
+
+      // Today's daily forecast values in local (Europe/Madrid) time.
+      const maxTemp = wx.daily?.temperature_2m_max?.[0];
+      const maxUv = wx.daily?.uv_index_max?.[0];
+      const sunrise = wx.daily?.sunrise?.[0];
+      const sunset = wx.daily?.sunset?.[0];
+      document.getElementById('wx-max-temp').textContent = Number.isFinite(maxTemp) ? Math.round(maxTemp) + '°' : 'n/a';
+      document.getElementById('wx-max-uv').textContent = Number.isFinite(maxUv) ? Math.round(maxUv) : 'n/a';
+      const toClock = iso => iso ? iso.slice(11,16) : 'n/a';
+      document.getElementById('wx-sunrise').textContent = toClock(sunrise);
+      document.getElementById('wx-sunset').textContent = toClock(sunset);
     } catch (e) {
       document.getElementById('wx-temp').textContent = 'n/a';
       document.getElementById('wx-uv').textContent = 'n/a';
+      document.getElementById('wx-max-temp').textContent = 'n/a';
+      document.getElementById('wx-max-uv').textContent = 'n/a';
+      document.getElementById('wx-sunrise').textContent = 'n/a';
+      document.getElementById('wx-sunset').textContent = 'n/a';
     }
 
     try {
