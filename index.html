@@ -5,7 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Finca Flamenco — Guest guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#1B4A47">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Finca Flamenco">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
 <style>
   :root {
     --terra: #B8912F;
@@ -18,59 +24,81 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     background: var(--blanco);
     color: var(--text);
-    max-width: 480px;
+    max-width: 520px;
     margin: 0 auto;
-    padding-bottom: 60px;
+    min-height: 100vh;
+    padding-bottom: calc(92px + env(safe-area-inset-bottom));
+    box-shadow: 0 0 35px rgba(27,74,71,0.08);
   }
   header {
     background: var(--azul);
     color: var(--blanco);
-    padding: 20px 20px 20px;
+    padding: 18px 20px 16px;
     text-align: center;
   }
   header img {
-    width: 88px;
-    height: 88px;
+    width: 76px;
+    height: 76px;
     object-fit: contain;
     margin-bottom: 4px;
   }
   header h1 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
     font-size: 28px;
     letter-spacing: 0.5px;
   }
   header p { font-size: 13px; opacity: 0.85; margin-top: 4px; }
   nav {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--crema);
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    display: flex;
+    gap: 2px;
+    background: rgba(251,250,246,0.98);
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: min(100%, 520px);
+    z-index: 50;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    padding: 7px 8px calc(7px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--crema);
+    box-shadow: 0 -8px 24px rgba(27,74,71,0.09);
   }
+  nav::-webkit-scrollbar { display: none; }
   nav button {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 11px;
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
     font-weight: 500;
-    background: var(--blanco);
+    background: transparent;
     border: none;
-    padding: 10px 3px;
+    border-radius: 10px;
+    min-width: 70px;
+    padding: 8px 5px 7px;
     cursor: pointer;
     color: var(--azul);
-    border-bottom: 3px solid transparent;
+    flex: 1 0 70px;
+    transition: background .2s ease, color .2s ease, transform .2s ease;
   }
-  nav button.active { border-bottom: 3px solid var(--terra); color: var(--terra); background: var(--crema); }
+  nav button::before {
+    content: attr(data-icon);
+    display: block;
+    font-size: 18px;
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+  nav button:active { transform: scale(.96); }
+  nav button.active { color: var(--terra); background: rgba(212,177,94,.15); }
   main { padding: 20px; }
   section { display: none; }
   section.active { display: block; animation: fade 0.25s ease; }
   @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
   section h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
     font-size: 24px;
     color: var(--terra);
@@ -81,11 +109,12 @@
   .card {
     background: #fff;
     border: 1px solid var(--crema);
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 16px 18px;
     margin-bottom: 14px;
+    box-shadow: 0 4px 16px rgba(27,74,71,0.045);
   }
-  .card h3 { font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 15px; color: var(--azul); margin-bottom: 6px; }
+  .card h3 { font-family: 'Jost', sans-serif; font-weight: 600; font-size: 15px; color: var(--azul); margin-bottom: 6px; }
   .card p, .card li { font-size: 14px; line-height: 1.6; color: var(--text); }
   .card ul { padding-left: 18px; }
   .card ul li { margin-bottom: 4px; }
@@ -97,7 +126,7 @@
     margin-bottom: 14px;
     text-align: center;
   }
-  .wifi-box .net { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; }
+  .wifi-box .net { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; }
   .wifi-box .pass {
     font-size: 18px;
     letter-spacing: 1px;
@@ -120,9 +149,9 @@
   }
   .emergency-btn.secondary { background: var(--azul); }
   .emergency-btn .name { font-weight: 500; font-size: 14px; }
-  .emergency-btn .num { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; white-space: nowrap; margin-left: 10px; }
+  .emergency-btn .num { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; white-space: nowrap; margin-left: 10px; }
   .event-card { border-left: 3px solid var(--ocre); }
-  .event-date { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--terra); font-size: 16px; }
+  .event-date { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--terra); font-size: 16px; }
   .event-place { font-size: 12px; color: var(--azul-claro); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
   .market-day { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--crema); font-size: 14px; gap: 10px; }
   .market-day:last-child { border-bottom: none; }
@@ -149,7 +178,7 @@
     text-align: center;
   }
   .welcome-card .greeting {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 4px;
@@ -168,8 +197,18 @@
     padding: 14px 6px;
     text-align: center;
   }
-  .stat-box .val { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; }
+  .stat-box .val { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; }
   .stat-box .lab { font-size: 10px; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.3px; margin-top: 2px; }
+
+  .quick-actions { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:16px; }
+  .quick-action { display:flex; align-items:center; justify-content:center; gap:8px; text-decoration:none; border-radius:12px; padding:12px 10px; background:#fff; border:1px solid var(--crema); color:var(--azul); font-size:13px; font-weight:600; }
+  .quick-action.primary { background:var(--terra); color:#fff; border-color:var(--terra); }
+  .copy-btn { margin-top:12px; border:1px solid rgba(255,255,255,.45); background:rgba(255,255,255,.12); color:#fff; border-radius:999px; padding:9px 14px; font-family:'Jost',sans-serif; font-weight:600; cursor:pointer; }
+  .copy-btn.copied { background:#fff; color:var(--azul); }
+  .whatsapp-fab { position:fixed; right:max(16px, calc((100vw - 520px)/2 + 16px)); bottom:calc(86px + env(safe-area-inset-bottom)); z-index:60; width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#25D366; color:#fff; text-decoration:none; font-size:24px; box-shadow:0 8px 22px rgba(0,0,0,.2); border:3px solid #fff; }
+  .toast { position:fixed; left:50%; bottom:calc(96px + env(safe-area-inset-bottom)); transform:translate(-50%,20px); background:var(--azul); color:#fff; padding:10px 14px; border-radius:999px; font-size:12px; opacity:0; pointer-events:none; transition:.25s ease; z-index:70; white-space:nowrap; }
+  .toast.show { opacity:1; transform:translate(-50%,0); }
+  @media (min-width:521px){ body{ margin-top:18px; margin-bottom:18px; border-radius:18px; overflow-x:hidden; } }
   footer { text-align: center; font-size: 12px; color: var(--azul-claro); padding: 24px 20px; }
 </style>
 </head>
@@ -182,13 +221,13 @@
 </header>
 
 <nav>
-  <button class="active" data-tab="today">Today</button>
-  <button data-tab="regels">House rules</button>
-  <button data-tab="airco">Aircon &amp; water</button>
-  <button data-tab="wifi">WiFi</button>
-  <button data-tab="tv">TV</button>
-  <button data-tab="activiteiten">Activities</button>
-  <button data-tab="nood">Emergency</button>
+  <button class="active" data-tab="today" data-icon="☀️">Today</button>
+  <button data-tab="regels" data-icon="⌂">Rules</button>
+  <button data-tab="airco" data-icon="❄️">Climate</button>
+  <button data-tab="wifi" data-icon="⌁">WiFi</button>
+  <button data-tab="tv" data-icon="▣">TV</button>
+  <button data-tab="activiteiten" data-icon="✦">Explore</button>
+  <button data-tab="nood" data-icon="✚">Help</button>
 </nav>
 
 <main>
@@ -211,6 +250,10 @@
         <div class="val" id="wx-sea">…</div>
         <div class="lab">Sea, °C</div>
       </div>
+    </div>
+    <div class="quick-actions">
+      <button class="quick-action" type="button" data-open-tab="wifi">⌁ WiFi</button>
+      <a class="quick-action primary" href="https://wa.me/34603932496?text=Hello%20Finca%20Flamenco%2C%20I%20have%20a%20question%20during%20my%20stay." target="_blank" rel="noopener">WhatsApp us</a>
     </div>
     <div class="card">
       <h3>Pool water temperature</h3>
@@ -319,7 +362,8 @@
     <h2>WiFi connection</h2>
     <div class="wifi-box">
       <div class="net">Finca-Flamenco_GUEST</div>
-      <div class="pass">Flamenco29560</div>
+      <div class="pass" id="wifi-password">Flamenco29560</div>
+      <button class="copy-btn" id="copy-wifi" type="button">Copy password</button>
     </div>
     <div class="card">
       <h3>Connecting</h3>
@@ -414,17 +458,17 @@
     <a href="tel:061" class="emergency-btn secondary"><span class="name">Medical emergency</span><span class="num">061</span></a>
     <div class="card" style="margin-top:14px;">
       <h3>Nearest hospital</h3>
-      <p>Hospital de Alta Resolución Valle del Guadalhorce<br>A-357, 29570 Cártama, Málaga</p>
+      <p>Hospital de Alta Resolución Valle del Guadalhorce<br>A-357, 29570 Cártama, Málaga</p><p style="margin-top:10px;"><a href="https://www.google.com/maps/search/?api=1&query=Hospital+de+Alta+Resoluci%C3%B3n+Valle+del+Guadalhorce" target="_blank" rel="noopener">Open in Google Maps →</a></p>
     </div>
     <a href="tel:+34951032000" class="emergency-btn secondary"><span class="name">Hospital</span><span class="num">+34 951 03 20 00</span></a>
     <div class="card" style="margin-top:14px;">
       <h3>Doctor — Centro de Salud</h3>
-      <p>Calle Doctor López de Uralde, 0 S/N, Pl. el Ayuntamiento 10, 29560 Pizarra</p>
+      <p>Calle Doctor López de Uralde, 0 S/N, Pl. el Ayuntamiento 10, 29560 Pizarra</p><p style="margin-top:10px;"><a href="https://www.google.com/maps/search/?api=1&query=Centro+de+Salud+Pizarra+Malaga" target="_blank" rel="noopener">Open in Google Maps →</a></p>
     </div>
     <a href="tel:+34951504616" class="emergency-btn secondary"><span class="name">Doctor</span><span class="num">+34 951 50 46 16</span></a>
     <div class="card" style="margin-top:14px;">
       <h3>Pharmacy — Farmacia Cerralba</h3>
-      <p>C. Rda. Este 38, 29569 Cerralba</p>
+      <p>C. Rda. Este 38, 29569 Cerralba</p><p style="margin-top:10px;"><a href="https://www.google.com/maps/search/?api=1&query=Farmacia+Cerralba+Malaga" target="_blank" rel="noopener">Open in Google Maps →</a></p>
     </div>
     <a href="tel:+34952484247" class="emergency-btn secondary"><span class="name">Pharmacy</span><span class="num">+34 952 48 42 47</span></a>
     <a href="tel:+34616492537" class="emergency-btn secondary" style="margin-top:14px;"><span class="name">Taxi Toni Pizarra</span><span class="num">+34 616 49 25 37</span></a>
@@ -435,21 +479,51 @@
       <h3>Contact the owners</h3>
       <p>For any other emergency or help:</p>
     </div>
-    <a href="tel:+34603932496" class="emergency-btn"><span class="name">Finca Flamenco (business)</span><span class="num">+34 603 93 24 96</span></a>
+    <a href="tel:+34603932496" class="emergency-btn"><span class="name">Call Finca Flamenco</span><span class="num">+34 603 93 24 96</span></a>
+    <a href="https://wa.me/34603932496?text=Hello%20Finca%20Flamenco%2C%20I%20need%20some%20help." target="_blank" rel="noopener" class="emergency-btn secondary"><span class="name">WhatsApp Finca Flamenco</span><span class="num">Chat</span></a>
   </section>
 
 </main>
 
+<a class="whatsapp-fab" href="https://wa.me/34603932496?text=Hello%20Finca%20Flamenco%2C%20I%20have%20a%20question%20during%20my%20stay." target="_blank" rel="noopener" aria-label="WhatsApp Finca Flamenco">✆</a>
+<div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
+
 <footer>Finca Flamenco Holiday Suites · Pizarra, Andalusia</footer>
 
 <script>
-  document.querySelectorAll('nav button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
-    });
+  function openTab(tabId) {
+    const target = document.getElementById(tabId);
+    const btn = document.querySelector(`nav button[data-tab="${tabId}"]`);
+    if (!target || !btn) return;
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('main section').forEach(sec => sec.classList.remove('active'));
+    btn.classList.add('active');
+    target.classList.add('active');
+    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    history.replaceState(null, '', '#' + tabId);
+  }
+
+  document.querySelectorAll('nav button').forEach(btn => btn.addEventListener('click', () => openTab(btn.dataset.tab)));
+  document.querySelectorAll('[data-open-tab]').forEach(btn => btn.addEventListener('click', () => openTab(btn.dataset.openTab)));
+
+  const initialTab = location.hash.slice(1);
+  if (initialTab && document.getElementById(initialTab)) openTab(initialTab);
+
+  const copyBtn = document.getElementById('copy-wifi');
+  if (copyBtn) copyBtn.addEventListener('click', async () => {
+    const password = document.getElementById('wifi-password').textContent.trim();
+    try {
+      await navigator.clipboard.writeText(password);
+      copyBtn.textContent = 'Copied ✓';
+      copyBtn.classList.add('copied');
+      const toast = document.getElementById('toast');
+      toast.textContent = 'WiFi password copied';
+      toast.classList.add('show');
+      setTimeout(() => { toast.classList.remove('show'); copyBtn.textContent = 'Copy password'; copyBtn.classList.remove('copied'); }, 1800);
+    } catch (e) {
+      prompt('Copy WiFi password:', password);
+    }
   });
 
   // --- Greeting based on time of day ---
@@ -521,6 +595,10 @@
     }
   }
   loadWeather();
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+  }
 </script>
 
 </body>

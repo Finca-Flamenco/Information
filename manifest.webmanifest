@@ -1,0 +1,14 @@
+{
+  "name": "Finca Flamenco Guest Guide",
+  "short_name": "Finca Guide",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBFAF6",
+  "theme_color": "#1B4A47",
+  "description": "Digital guest guide for Finca Flamenco Holiday Suites",
+  "icons": [
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png"}
+  ]
+}
