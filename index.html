@@ -345,6 +345,19 @@
     background-position:calc(100% - 5px) 48%,100% 48%; background-size:5px 5px,5px 5px; background-repeat:no-repeat;
   }
 
+
+  /* v10 header tuning */
+  @media (max-width: 520px) {
+    header {
+      min-height: 390px;
+      background-position: center center;
+    }
+  }
+  @media (max-width: 390px) {
+    header {
+      min-height: 360px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -766,7 +779,6 @@
   const browserLanguage = (navigator.language || 'en').slice(0,2).toLowerCase();
   const initialLanguage = SUPPORTED_LANGS.includes(savedLanguage) ? savedLanguage : (SUPPORTED_LANGS.includes(browserLanguage) ? browserLanguage : 'en');
   document.getElementById('language-select')?.addEventListener('change', e => setLanguage(e.target.value));
-  setLanguage(initialLanguage);
 
   // --- DAILY / WEEKLY CONTENT ---
   // Edit daily.json in GitHub to update the pool temperature or weekly tip.
@@ -815,6 +827,7 @@
     renderDaily();
   }
 
+  setLanguage(initialLanguage);
   loadDaily();
 
   // --- LIVE WEATHER, UV INDEX & SEA TEMPERATURE ---
