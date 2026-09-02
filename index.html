@@ -180,6 +180,24 @@
     text-align: center;
   }
   .wifi-box .net { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; }
+  .wifi-warning {
+    background: #fffaf0;
+    border: 2px solid var(--ocre);
+    border-left: 5px solid var(--terra);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .wifi-warning h3 {
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--terra);
+    margin-bottom: 7px;
+    text-transform: uppercase;
+    letter-spacing: .35px;
+  }
+  .wifi-warning p { font-size: 14px; line-height: 1.6; color: var(--text); }
   .wifi-box .pass {
     font-size: 18px;
     letter-spacing: 1px;
@@ -662,9 +680,9 @@
         <li>Enter the password</li>
       </ul>
     </div>
-    <div class="card">
-      <h3>Responsible WiFi use</h3>
-      <p>Our internet connection is provided via Starlink. Illegal downloading, streaming, file sharing, or accessing illegal websites or services through our WiFi network is strictly prohibited. Please use the connection responsibly — guests are responsible for their own internet activity.</p>
+    <div class="wifi-warning">
+      <h3>⚠ Illegal downloading prohibited</h3>
+      <p>It is strictly prohibited to use the Finca Flamenco WiFi network to illegally download, upload or share copyrighted content such as movies, TV series, music, software, games or other media. This also applies to torrents, illegal streaming services and other unauthorized file-sharing services. Guests are responsible for their own internet activity.</p>
     </div>
     <div class="card">
       <h3>No connection?</h3>
@@ -803,6 +821,20 @@
     'Responsible WiFi use':'Uso responsable del WiFi',
     'Our internet connection is provided via Starlink. Illegal downloading, streaming, file sharing, or accessing illegal websites or services through our WiFi network is strictly prohibited. Please use the connection responsibly — guests are responsible for their own internet activity.':'Nuestra conexión a Internet se proporciona mediante Starlink. Queda estrictamente prohibido descargar, transmitir o compartir archivos ilegalmente, así como acceder o utilizar sitios web o servicios ilegales a través de nuestra red WiFi. Utilice la conexión de forma responsable — los huéspedes son responsables de su propia actividad en Internet.'
   });
+
+  Object.assign(I18N.nl, {
+    '⚠ Illegal downloading prohibited':'⚠ Illegaal downloaden verboden',
+    'It is strictly prohibited to use the Finca Flamenco WiFi network to illegally download, upload or share copyrighted content such as movies, TV series, music, software, games or other media. This also applies to torrents, illegal streaming services and other unauthorized file-sharing services. Guests are responsible for their own internet activity.':'Het is strikt verboden om het WiFi-netwerk van Finca Flamenco te gebruiken voor het illegaal downloaden, uploaden of delen van auteursrechtelijk beschermd materiaal, zoals films, series, muziek, software, games of andere media. Dit geldt ook voor torrents, illegale streamingdiensten en andere ongeautoriseerde diensten voor het delen van bestanden. Gasten zijn zelf verantwoordelijk voor hun internetgebruik.'
+  });
+  Object.assign(I18N.de, {
+    '⚠ Illegal downloading prohibited':'⚠ Illegales Herunterladen verboten',
+    'It is strictly prohibited to use the Finca Flamenco WiFi network to illegally download, upload or share copyrighted content such as movies, TV series, music, software, games or other media. This also applies to torrents, illegal streaming services and other unauthorized file-sharing services. Guests are responsible for their own internet activity.':'Es ist strengstens untersagt, das WLAN-Netzwerk von Finca Flamenco zum illegalen Herunterladen, Hochladen oder Teilen urheberrechtlich geschützter Inhalte wie Filme, Serien, Musik, Software, Spiele oder andere Medien zu verwenden. Dies gilt auch für Torrents, illegale Streaming-Dienste und andere nicht autorisierte Filesharing-Dienste. Gäste sind für ihre eigenen Internetaktivitäten selbst verantwortlich.'
+  });
+  Object.assign(I18N.es, {
+    '⚠ Illegal downloading prohibited':'⚠ Prohibidas las descargas ilegales',
+    'It is strictly prohibited to use the Finca Flamenco WiFi network to illegally download, upload or share copyrighted content such as movies, TV series, music, software, games or other media. This also applies to torrents, illegal streaming services and other unauthorized file-sharing services. Guests are responsible for their own internet activity.':'Está estrictamente prohibido utilizar la red WiFi de Finca Flamenco para descargar, subir o compartir ilegalmente contenido protegido por derechos de autor, como películas, series, música, software, juegos u otros contenidos multimedia. Esto también se aplica a torrents, servicios de streaming ilegales y otros servicios no autorizados para compartir archivos. Los huéspedes son responsables de su propia actividad en Internet.'
+  });
+
 
   Object.assign(I18N.nl, {
     '4 – 8 September · Fuengirola (Los Boliches)':'4 – 8 september · Fuengirola (Los Boliches)',
