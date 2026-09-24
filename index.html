@@ -182,6 +182,21 @@
     text-align: center;
   }
   .wifi-box .net { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; }
+  .wifi-reveal {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 9px 14px;
+    border: 1px solid rgba(255,255,255,.55);
+    border-radius: 999px;
+    background: rgba(255,255,255,.12);
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+  .wifi-reveal.revealed {
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
   .wifi-warning {
     background: #fffaf0;
     border: 2px solid var(--ocre);
@@ -651,13 +666,27 @@
     <div class="card event-card"><div class="event-place">18 – 21 September · Torrox</div><div class="event-date">Torrox Oktoberfest</div><p>A lively coastal celebration with traditional German beer, hearty food, music, and a festive beer-tent atmosphere.</p></div>
     <div class="card event-card"><div class="event-place">20 September · Torremolinos</div><div class="event-date">San Miguel pilgrimage (Romería)</div><p>A grand traditional pilgrimage with Andalusian dress, horses and decorated carts heading to the pine forests of Los Manantiales.</p></div>
     <div class="card event-card"><div class="event-place">25 – 29 September · Torremolinos</div><div class="event-date">Feria de San Miguel</div><p>Torremolinos' major annual town fair, with daytime feria culture, evening casetas, concerts, funfair attractions and dancing.</p></div>
-    <h2 style="margin-top:24px;">Weekly markets (9:00 – 14:00)</h2>
+    <h2 class="today-section-title">What's on · October 2026</h2>
+    <p class="explore-intro">A selection of local events worth planning into your stay next month.</p>
+    <div class="card event-card"><div class="event-place">2 – 4 October · Cártama</div><div class="event-date">Mercado Árabe</div><p>An Andalusian-Arabic market weekend with crafts, food, music and entertainment.</p></div>
+    <div class="card event-card"><div class="event-place">3 October · Álora</div><div class="event-date">Día de las Sopas Perotas</div><p>A major local gastronomic celebration centred around Álora's traditional sopa perota.</p></div>
+    <div class="card event-card"><div class="event-place">3 October · Pizarra</div><div class="event-date">Pizarrock Fest</div><p>A free local rock festival with live music and a relaxed local atmosphere.</p></div>
+    <div class="card event-card"><div class="event-place">6 – 12 October · Fuengirola</div><div class="event-date">Feria del Rosario</div><p>One of Andalusia's major traditional fairs, with horses, flamenco dresses, daytime celebrations, casetas, music, dancing and a lively Andalusian atmosphere at the Recinto Ferial.</p></div>
+    <div class="card event-card"><div class="event-place">10 October · Álora</div><div class="event-date">Flamenco Night · Rocío Bazán</div><p>Traditional flamenco at the Peña Flamenca de Álora.</p></div>
+    <div class="card event-card"><div class="event-place">12 October · Málaga</div><div class="event-date">Zoco Maravilla · Muelle Uno</div><p>A special harbour market with crafts, gourmet products and local products.</p></div>
+    <div class="card event-card"><div class="event-place">16 – 18 October · Pizarra</div><div class="event-date">18ª Ruta de la Tapa</div><p>Three days of tapas, creative dishes and local hospitality at participating venues throughout Pizarra.</p></div>
+    <div class="card event-card"><div class="event-place">18 October · Coín</div><div class="event-date">Mercado de Quesos de Málaga</div><p>A market dedicated to artisan cheeses from the province of Málaga.</p></div>
+    <div class="card event-card"><div class="event-place">30 October · Álora</div><div class="event-date">Lola Reina in Concert</div><p>Live concert in Álora.</p></div>
+    <div class="card event-card"><div class="event-place">31 October · Coín</div><div class="event-date">Procesión Virgen de la Fuensanta</div><p>A traditional procession in honour of the patron saint of Coín.</p></div>
+    <div class="card event-card"><div class="event-place">31 October · Pizarra</div><div class="event-date">Halloween · Noche del Terror</div><p>Pizarra's local Halloween night. Programme details and times are still to be announced.</p></div>
+    <div class="card event-card"><div class="event-place">31 October · Torremolinos</div><div class="event-date">SUENA Torremolinos</div><p>An evening of live bands, DJs and alternative music.</p></div>
+    <h2 style="margin-top:24px;">Weekly markets (approx. 9:00 – 14:00)</h2>
     <div class="card">
       <div class="market-day"><span class="day">Tuesday</span><span>Fuengirola — large general market (Recinto Ferial)</span></div>
-      <div class="market-day"><span class="day">Wednesday</span><span>La Cala de Mijas — local market, fresh produce</span></div>
-      <div class="market-day"><span class="day">Thursday</span><span>Torremolinos — general market (Recinto Ferial)</span></div>
-      <div class="market-day"><span class="day">Saturday</span><span>Fuengirola — large flea market / Rastro</span></div>
-      <div class="market-day"><span class="day">Sunday</span><span>Coín (La Trocha), Torremolinos (flea market), Málaga (Palacio de Ferias)</span></div>
+      <div class="market-day"><span class="day">Wednesday</span><span>La Cala de Mijas — general market (Recinto Ferial)</span></div>
+      <div class="market-day"><span class="day">Thursday</span><span>Torremolinos — general market · Calypso (Mijas Costa) — local market</span></div>
+      <div class="market-day"><span class="day">Saturday</span><span>Fuengirola — large flea market / Rastro · La Cala de Mijas & Las Lagunas — general markets</span></div>
+      <div class="market-day"><span class="day">Sunday</span><span>Coín (La Trocha) — local produce market · Torremolinos — flea market · Fuengirola (Santa Amalia) — Sunday market</span></div>
     </div>
   </section>
 
@@ -762,15 +791,14 @@
     <h2>WiFi connection</h2>
     <div class="wifi-box">
       <div class="net">Finca-Flamenco_GUEST</div>
-      <div class="pass" id="wifi-password">Flamenco29560</div>
-      <button class="copy-btn" id="copy-wifi" type="button">Copy password</button>
+      <button class="pass wifi-reveal" id="wifi-reveal" type="button" aria-expanded="false">Tap to reveal password</button>
     </div>
     <div class="card">
       <h3>Connecting</h3>
       <ul>
         <li>Open WiFi settings on your phone, tablet, or laptop</li>
         <li>Select the network above</li>
-        <li>Enter the password</li>
+        <li>Tap above to reveal the WiFi password</li>
       </ul>
     </div>
     <div class="wifi-warning">
@@ -1009,7 +1037,86 @@
     'The shared dinner takes place with a minimum of 6 participants. Interested? Let us know during your stay or send us a WhatsApp.':'La cena compartida se celebra con un mínimo de 6 participantes. ¿Te interesa? Dínoslo durante tu estancia o envíanos un WhatsApp.'
   });
 
-  const SUPPORTED_LANGS = ['en','nl','de','es'];
+  
+  Object.assign(I18N.nl, {
+    "What's on · October 2026":"Wat is er te doen · oktober 2026",
+    "A selection of local events worth planning into your stay next month.":"Een selectie van lokale evenementen die leuk zijn om in uw verblijf van volgende maand op te nemen.",
+    "An Andalusian-Arabic market weekend with crafts, food, music and entertainment.":"Een Andalusisch-Arabisch marktweekend met ambachten, eten, muziek en entertainment.",
+    "A major local gastronomic celebration centred around Álora's traditional sopa perota.":"Een groot lokaal gastronomisch feest rond de traditionele sopa perota van Álora.",
+    "A free local rock festival with live music and a relaxed local atmosphere.":"Een gratis lokaal rockfestival met livemuziek en een ontspannen lokale sfeer.",
+    "Traditional flamenco at the Peña Flamenca de Álora.":"Traditionele flamenco bij de Peña Flamenca de Álora.",
+    "A special harbour market with crafts, gourmet products and local products.":"Een bijzondere markt aan de haven met ambachten, gourmetproducten en lokale producten.",
+    "Three days of tapas, creative dishes and local hospitality at participating venues throughout Pizarra.":"Drie dagen tapas, creatieve gerechten en lokale gastvrijheid bij deelnemende zaken in heel Pizarra.",
+    "A market dedicated to artisan cheeses from the province of Málaga.":"Een markt gewijd aan ambachtelijke kazen uit de provincie Málaga.",
+    "Live concert in Álora.":"Liveconcert in Álora.",
+    "A traditional procession in honour of the patron saint of Coín.":"Een traditionele processie ter ere van de beschermheilige van Coín.",
+    "Pizarra's local Halloween night. Programme details and times are still to be announced.":"De lokale Halloweenavond van Pizarra. Programmadetails en tijden worden nog bekendgemaakt.",
+    "An evening of live bands, DJs and alternative music.":"Een avond met livebands, dj's en alternatieve muziek."
+  });
+  Object.assign(I18N.de, {
+    "What's on · October 2026":"Was ist los · Oktober 2026",
+    "A selection of local events worth planning into your stay next month.":"Eine Auswahl lokaler Veranstaltungen, die sich im nächsten Monat gut in Ihren Aufenthalt einplanen lassen.",
+    "An Andalusian-Arabic market weekend with crafts, food, music and entertainment.":"Ein andalusisch-arabisches Marktwochenende mit Kunsthandwerk, Essen, Musik und Unterhaltung.",
+    "A major local gastronomic celebration centred around Álora's traditional sopa perota.":"Ein großes lokales Gastronomiefest rund um Álora's traditionelle Sopa Perota.",
+    "A free local rock festival with live music and a relaxed local atmosphere.":"Ein kostenloses lokales Rockfestival mit Livemusik und entspannter Atmosphäre.",
+    "Traditional flamenco at the Peña Flamenca de Álora.":"Traditioneller Flamenco in der Peña Flamenca de Álora.",
+    "A special harbour market with crafts, gourmet products and local products.":"Ein besonderer Hafenmarkt mit Kunsthandwerk, Gourmet- und lokalen Produkten.",
+    "Three days of tapas, creative dishes and local hospitality at participating venues throughout Pizarra.":"Drei Tage Tapas, kreative Gerichte und lokale Gastfreundschaft in teilnehmenden Lokalen in ganz Pizarra.",
+    "A market dedicated to artisan cheeses from the province of Málaga.":"Ein Markt für handwerklich hergestellte Käsesorten aus der Provinz Málaga.",
+    "Live concert in Álora.":"Livekonzert in Álora.",
+    "A traditional procession in honour of the patron saint of Coín.":"Eine traditionelle Prozession zu Ehren der Schutzpatronin von Coín.",
+    "Pizarra's local Halloween night. Programme details and times are still to be announced.":"Pizarras lokale Halloween-Nacht. Programmdetails und Zeiten werden noch bekannt gegeben.",
+    "An evening of live bands, DJs and alternative music.":"Ein Abend mit Livebands, DJs und alternativer Musik."
+  });
+  Object.assign(I18N.es, {
+    "What's on · October 2026":"Qué hacer · octubre de 2026",
+    "A selection of local events worth planning into your stay next month.":"Una selección de eventos locales que merece la pena incluir en su estancia del próximo mes.",
+    "An Andalusian-Arabic market weekend with crafts, food, music and entertainment.":"Un fin de semana de mercado andalusí-árabe con artesanía, comida, música y entretenimiento.",
+    "A major local gastronomic celebration centred around Álora's traditional sopa perota.":"Una gran celebración gastronómica local en torno a la tradicional sopa perota de Álora.",
+    "A free local rock festival with live music and a relaxed local atmosphere.":"Un festival local de rock gratuito con música en directo y un ambiente relajado.",
+    "Traditional flamenco at the Peña Flamenca de Álora.":"Flamenco tradicional en la Peña Flamenca de Álora.",
+    "A special harbour market with crafts, gourmet products and local products.":"Un mercado especial junto al puerto con artesanía, productos gourmet y productos locales.",
+    "Three days of tapas, creative dishes and local hospitality at participating venues throughout Pizarra.":"Tres días de tapas, platos creativos y hospitalidad local en los establecimientos participantes de Pizarra.",
+    "A market dedicated to artisan cheeses from the province of Málaga.":"Un mercado dedicado a los quesos artesanales de la provincia de Málaga.",
+    "Live concert in Álora.":"Concierto en directo en Álora.",
+    "A traditional procession in honour of the patron saint of Coín.":"Una procesión tradicional en honor a la patrona de Coín.",
+    "Pizarra's local Halloween night. Programme details and times are still to be announced.":"La noche local de Halloween de Pizarra. Los detalles del programa y los horarios aún están por anunciar.",
+    "An evening of live bands, DJs and alternative music.":"Una noche de bandas en directo, DJs y música alternativa."
+  });
+
+
+  Object.assign(I18N.nl, {
+    "6 – 12 October · Fuengirola":"6 – 12 oktober · Fuengirola",
+    "Feria del Rosario":"Feria del Rosario",
+    "One of Andalusia's major traditional fairs, with horses, flamenco dresses, daytime celebrations, casetas, music, dancing and a lively Andalusian atmosphere at the Recinto Ferial.":"Een van de grote traditionele feria’s van Andalusië, met paarden, flamencojurken, feesten overdag, casetas, muziek, dans en een levendige Andalusische sfeer op het Recinto Ferial.",
+    "Weekly markets (approx. 9:00 – 14:00)":"Wekelijkse markten (ca. 9:00 – 14:00)",
+    "La Cala de Mijas — general market (Recinto Ferial)":"La Cala de Mijas — algemene markt (Recinto Ferial)",
+    "Torremolinos — general market · Calypso (Mijas Costa) — local market":"Torremolinos — algemene markt · Calypso (Mijas Costa) — lokale markt",
+    "Fuengirola — large flea market / Rastro · La Cala de Mijas & Las Lagunas — general markets":"Fuengirola — grote vlooienmarkt / Rastro · La Cala de Mijas & Las Lagunas — algemene markten",
+    "Coín (La Trocha) — local produce market · Torremolinos — flea market · Fuengirola (Santa Amalia) — Sunday market":"Coín (La Trocha) — markt met lokale producten · Torremolinos — vlooienmarkt · Fuengirola (Santa Amalia) — zondagsmarkt"
+  });
+  Object.assign(I18N.de, {
+    "6 – 12 October · Fuengirola":"6. – 12. Oktober · Fuengirola",
+    "Feria del Rosario":"Feria del Rosario",
+    "One of Andalusia's major traditional fairs, with horses, flamenco dresses, daytime celebrations, casetas, music, dancing and a lively Andalusian atmosphere at the Recinto Ferial.":"Eines der großen traditionellen Volksfeste Andalusiens mit Pferden, Flamenco-Kleidern, Feiern am Tag, Casetas, Musik, Tanz und lebhafter andalusischer Atmosphäre auf dem Festgelände.",
+    "Weekly markets (approx. 9:00 – 14:00)":"Wochenmärkte (ca. 9:00 – 14:00)",
+    "La Cala de Mijas — general market (Recinto Ferial)":"La Cala de Mijas — allgemeiner Markt (Festgelände)",
+    "Torremolinos — general market · Calypso (Mijas Costa) — local market":"Torremolinos — allgemeiner Markt · Calypso (Mijas Costa) — lokaler Markt",
+    "Fuengirola — large flea market / Rastro · La Cala de Mijas & Las Lagunas — general markets":"Fuengirola — großer Flohmarkt / Rastro · La Cala de Mijas & Las Lagunas — allgemeine Märkte",
+    "Coín (La Trocha) — local produce market · Torremolinos — flea market · Fuengirola (Santa Amalia) — Sunday market":"Coín (La Trocha) — Markt mit lokalen Produkten · Torremolinos — Flohmarkt · Fuengirola (Santa Amalia) — Sonntagsmarkt"
+  });
+  Object.assign(I18N.es, {
+    "6 – 12 October · Fuengirola":"6 – 12 de octubre · Fuengirola",
+    "Feria del Rosario":"Feria del Rosario",
+    "One of Andalusia's major traditional fairs, with horses, flamenco dresses, daytime celebrations, casetas, music, dancing and a lively Andalusian atmosphere at the Recinto Ferial.":"Una de las grandes ferias tradicionales de Andalucía, con caballos, trajes de flamenca, ambiente de día, casetas, música, baile y un animado ambiente andaluz en el Recinto Ferial.",
+    "Weekly markets (approx. 9:00 – 14:00)":"Mercadillos semanales (aprox. 9:00 – 14:00)",
+    "La Cala de Mijas — general market (Recinto Ferial)":"La Cala de Mijas — mercadillo general (Recinto Ferial)",
+    "Torremolinos — general market · Calypso (Mijas Costa) — local market":"Torremolinos — mercadillo general · Calypso (Mijas Costa) — mercadillo local",
+    "Fuengirola — large flea market / Rastro · La Cala de Mijas & Las Lagunas — general markets":"Fuengirola — gran rastro · La Cala de Mijas y Las Lagunas — mercadillos generales",
+    "Coín (La Trocha) — local produce market · Torremolinos — flea market · Fuengirola (Santa Amalia) — Sunday market":"Coín (La Trocha) — mercado de productos locales · Torremolinos — rastro · Fuengirola (Santa Amalia) — mercadillo dominical"
+  });
+
+const SUPPORTED_LANGS = ['en','nl','de','es'];
   let currentLanguage = 'en';
 
   function translateTextNode(node, lang) {
@@ -1079,20 +1186,29 @@
   const initialTab = location.hash.slice(1);
   if (initialTab && document.getElementById(initialTab)) openTab(initialTab);
 
-  const copyBtn = document.getElementById('copy-wifi');
-  if (copyBtn) copyBtn.addEventListener('click', async () => {
-    const password = document.getElementById('wifi-password').textContent.trim();
-    try {
-      await navigator.clipboard.writeText(password);
-      copyBtn.textContent = tr('Copied ✓');
-      copyBtn.classList.add('copied');
-      const toast = document.getElementById('toast');
-      toast.textContent = tr('WiFi password copied');
-      toast.classList.add('show');
-      setTimeout(() => { toast.classList.remove('show'); copyBtn.textContent = tr('Copy password'); copyBtn.classList.remove('copied'); }, 1800);
-    } catch (e) {
-      prompt(tr('Copy WiFi password:'), password);
-    }
+  Object.assign(I18N.nl, {
+    "Password available to staying guests":"Wachtwoord beschikbaar voor verblijvende gasten",
+    "Ask us for the WiFi password if you need it":"Vraag ons om het WiFi-wachtwoord als u het nodig heeft"
+  });
+  Object.assign(I18N.de, {
+    "Password available to staying guests":"Passwort für übernachtende Gäste verfügbar",
+    "Ask us for the WiFi password if you need it":"Fragen Sie uns nach dem WLAN-Passwort, wenn Sie es benötigen"
+  });
+  Object.assign(I18N.es, {
+    "Password available to staying guests":"Contraseña disponible para huéspedes alojados",
+    "Ask us for the WiFi password if you need it":"Pídanos la contraseña WiFi si la necesita"
+  });
+  Object.assign(I18N.nl, {
+    "Tap to reveal password":"Tik om wachtwoord te tonen",
+    "Tap above to reveal the WiFi password":"Tik hierboven om het WiFi-wachtwoord te tonen"
+  });
+  Object.assign(I18N.de, {
+    "Tap to reveal password":"Tippen, um das Passwort anzuzeigen",
+    "Tap above to reveal the WiFi password":"Tippen Sie oben, um das WLAN-Passwort anzuzeigen"
+  });
+  Object.assign(I18N.es, {
+    "Tap to reveal password":"Toca para mostrar la contraseña",
+    "Tap above to reveal the WiFi password":"Toca arriba para mostrar la contraseña WiFi"
   });
 
   // --- Greeting based on time of day ---
@@ -1160,6 +1276,24 @@
 
   setLanguage(initialLanguage);
   loadDaily();
+
+
+  // WiFi password reveal. This is a convenience feature, not access control.
+  const wifiReveal = document.getElementById('wifi-reveal');
+  if (wifiReveal) {
+    wifiReveal.addEventListener('click', () => {
+      const isRevealed = wifiReveal.classList.contains('revealed');
+      if (!isRevealed) {
+        wifiReveal.textContent = atob('RmxhbWVuY28yOTU2MA==');
+        wifiReveal.classList.add('revealed');
+        wifiReveal.setAttribute('aria-expanded', 'true');
+      } else {
+        wifiReveal.textContent = tr('Tap to reveal password');
+        wifiReveal.classList.remove('revealed');
+        wifiReveal.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 
   // --- LIVE WEATHER, UV INDEX & SEA TEMPERATURE ---
   // Pizarra coordinates
