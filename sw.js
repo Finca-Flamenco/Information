@@ -1,5 +1,6 @@
-const CACHE = 'finca-guide-v13';
+const CACHE = 'finca-guide-v13.3';
 const ASSETS = ['./','./index.html',
+  './playa-los-alamos.jpg',
   './barranco-blanco-own.jpg','./manifest.webmanifest','./icon-192.png','./icon-512.png','./header-finca.jpg'];
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS))));
 self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))));
