@@ -652,7 +652,7 @@
     <div class="card airco-today-card">
       <h3>❄️ Aircon &amp; heating</h3>
       <p><strong>Cooling: 22–25°C · Heating: 20–23°C</strong></p>
-      <p>Setting the temperature extremely low or high does <strong>not</strong> cool or heat the room faster. It only makes the unit run unnecessarily long, wasting electricity and causing extra wear.</p>
+      <p>Setting the temperature extremely low or high does not cool or heat the room faster. It only makes the unit run unnecessarily long, wasting electricity and causing extra wear.</p>
       <p>Use it consciously, just as you would at home. 🌿 <strong>Please turn it off when you're not in the room.</strong></p>
     </div>
 
@@ -1221,7 +1221,7 @@ const SUPPORTED_LANGS = ['en','nl','de','es'];
     document.querySelectorAll('#language-select option').forEach(o => { /* language codes remain universal */ });
     document.documentElement.lang = lang;
     document.title = {en:'Finca Flamenco — Guest guide',nl:'Finca Flamenco — Gastengids',de:'Finca Flamenco — Gästeführer',es:'Finca Flamenco — Guía para huéspedes'}[lang] || 'Finca Flamenco — Guest guide';
-    const navAria = {en:{today:'Today',regels:'Rules',airco:'Climate',wifi:'WiFi',tv:'TV',activiteiten:'Explore',nood:'Emergency'},nl:{today:'Vandaag',regels:'Huisregels',airco:'Klimaat',wifi:'WiFi',tv:'TV',activiteiten:'Ontdek',nood:'Noodhulp'},de:{today:'Heute',regels:'Hausregeln',airco:'Klima',wifi:'WLAN',tv:'TV',activiteiten:'Entdecken',nood:'Notfall'},es:{today:'Hoy',regels:'Normas',airco:'Clima',wifi:'WiFi',tv:'TV',activiteiten:'Explorar',nood:'Emergencias'}};
+    const navAria = {en:{today:'Today',regels:'Rules',airco:'Airco',wifi:'WiFi',tv:'TV',activiteiten:'Explore',nood:'Emergency'},nl:{today:'Vandaag',regels:'Huisregels',airco:'Airco',wifi:'WiFi',tv:'TV',activiteiten:'Ontdek',nood:'Noodhulp'},de:{today:'Heute',regels:'Hausregeln',airco:'Klima',wifi:'WLAN',tv:'TV',activiteiten:'Entdecken',nood:'Notfall'},es:{today:'Hoy',regels:'Normas',airco:'Clima',wifi:'WiFi',tv:'TV',activiteiten:'Explorar',nood:'Emergencias'}};
     document.querySelectorAll('nav button[data-tab]').forEach(b => b.setAttribute('aria-label', navAria[lang]?.[b.dataset.tab] || b.getAttribute('aria-label')));
     document.getElementById('language-select')?.setAttribute('aria-label', {en:'Language',nl:'Taal',de:'Sprache',es:'Idioma'}[lang]);
   }
