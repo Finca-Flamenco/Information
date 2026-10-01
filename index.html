@@ -650,10 +650,10 @@
     </div>
 
     <div class="card airco-today-card">
-      <h3>❄️ Aircon &amp; heating</h3>
-      <p><strong>Cooling: 22–25°C · Heating: 20–23°C</strong></p>
-      <p>Setting the temperature extremely low or high does not cool or heat the room faster. It only makes the unit run unnecessarily long, wasting electricity and causing extra wear.</p>
-      <p>Use it consciously, just as you would at home. 🌿 <strong>Please turn it off when you're not in the room.</strong></p>
+      <h3 id="airco-today-title">❄️ Aircon &amp; heating</h3>
+      <p><strong id="airco-today-range">Cooling: 22–25°C · Heating: 20–23°C</strong></p>
+      <p id="airco-today-explain">Setting the temperature extremely low or high does not cool or heat the room faster. It only makes the unit run unnecessarily long, wasting electricity and causing extra wear.</p>
+      <p><span id="airco-today-home">Use it consciously, just as you would at home. 🌿</span> <strong id="airco-today-off">Please turn it off when you're not in the room.</strong></p>
     </div>
 
 <h2 class="today-section-title">What's on · October 2026</h2>
@@ -1226,6 +1226,58 @@ const SUPPORTED_LANGS = ['en','nl','de','es'];
     document.getElementById('language-select')?.setAttribute('aria-label', {en:'Language',nl:'Taal',de:'Sprache',es:'Idioma'}[lang]);
   }
 
+  
+  const AIRCO_TODAY = {
+    en: {
+      title: '❄️ Aircon & heating',
+      range: 'Cooling: 22–25°C · Heating: 20–23°C',
+      explain: 'Setting the temperature extremely low or high does not cool or heat the room faster. It only makes the unit run unnecessarily long, wasting electricity and causing extra wear.',
+      home: 'Use it consciously, just as you would at home. 🌿',
+      off: "Please turn it off when you're not in the room."
+    },
+    nl: {
+      title: '❄️ Airco & verwarming',
+      range: 'Koelen: 22–25°C · Verwarmen: 20–23°C',
+      explain: 'Extreem laag of hoog instellen koelt of verwarmt de kamer niet sneller. De airco blijft dan onnodig lang draaien, wat zonde is van de stroom en voor extra slijtage van het apparaat zorgt.',
+      home: 'Gebruik de airco bewust, zoals je dat thuis ook zou doen. 🌿',
+      off: 'Zet hem uit wanneer je niet in de kamer bent.'
+    },
+    de: {
+      title: '❄️ Klimaanlage & Heizung',
+      range: 'Kühlen: 22–25°C · Heizen: 20–23°C',
+      explain: 'Eine extrem niedrige oder hohe Einstellung kühlt oder heizt den Raum nicht schneller. Das Gerät läuft dadurch nur unnötig lange, verbraucht Strom und verschleißt stärker.',
+      home: 'Nutzen Sie die Klimaanlage bewusst, so wie zu Hause. 🌿',
+      off: 'Bitte schalten Sie sie aus, wenn Sie nicht im Zimmer sind.'
+    },
+    es: {
+      title: '❄️ Aire acondicionado y calefacción',
+      range: 'Refrigeración: 22–25°C · Calefacción: 20–23°C',
+      explain: 'Ajustar una temperatura extremadamente baja o alta no enfría ni calienta la habitación más rápido. Solo hace que el equipo funcione innecesariamente durante más tiempo, gastando electricidad y provocando un desgaste adicional.',
+      home: 'Utilízalo de forma responsable, igual que en casa. 🌿',
+      off: 'Apágalo cuando no estés en la habitación.'
+    }
+  };
+
+  function renderAircoToday(lang) {
+    const x = AIRCO_TODAY[lang] || AIRCO_TODAY.en;
+    const ids = {
+      'airco-today-title': x.title,
+      'airco-today-range': x.range,
+      'airco-today-explain': x.explain,
+      'airco-today-home': x.home,
+      'airco-today-off': x.off
+    };
+    Object.entries(ids).forEach(([id,value]) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.textContent = value;
+        // Keep generic translator from overwriting this language-explicit content.
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+        while (walker.nextNode()) walker.currentNode.__i18nOriginal = value;
+      }
+    });
+  }
+
   function setLanguage(lang) {
     if (!SUPPORTED_LANGS.includes(lang)) lang='en';
     currentLanguage = lang;
@@ -1233,6 +1285,7 @@ const SUPPORTED_LANGS = ['en','nl','de','es'];
     const select = document.getElementById('language-select');
     if (select) select.value = lang;
     translateTree(document.body, lang);
+    renderAircoToday(lang);
     updateGreeting();
     renderDaily();
   }
