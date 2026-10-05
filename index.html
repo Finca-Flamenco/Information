@@ -606,7 +606,73 @@
     .forecast-grid-five .forecast-item:nth-child(5) { grid-column: 3 / 4; }
   }
 
+
+  /* v14.8: compact five-item forecast */
+  .forecast-grid-five {
+    display:grid !important;
+    grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+    gap:2px !important;
+    align-items:start;
+  }
+  .forecast-grid-five .forecast-item {
+    grid-column:auto !important;
+    min-width:0;
+    padding:4px 1px;
+    text-align:center;
+  }
+  .forecast-grid-five .forecast-line-icon,
+  .forecast-grid-five .forecast-line-icon svg {
+    display:block;
+    width:24px;
+    height:24px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .forecast-grid-five .value {
+    white-space:nowrap;
+    font-size:14px;
+    line-height:1.2;
+  }
+
+
+  /* v14.9 forecast: icon + value only, five equal columns */
+  .forecast-card .forecast-grid-five {
+    display:grid !important;
+    grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+    gap:0 !important;
+    width:100%;
+  }
+  .forecast-card .forecast-grid-five .forecast-item {
+    grid-column:auto !important;
+    min-width:0 !important;
+    width:auto !important;
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+    border-radius:0 !important;
+    padding:8px 2px 5px !important;
+    text-align:center;
+  }
+  .forecast-card .forecast-grid-five .forecast-item + .forecast-item {
+    border-left:1px solid rgba(27,74,71,.14) !important;
+  }
+  .forecast-card .forecast-line-icon,
+  .forecast-card .forecast-line-icon svg {
+    display:block;
+    width:25px !important;
+    height:25px !important;
+    margin:0 auto 6px !important;
+  }
+  .forecast-card .forecast-grid-five .value {
+    margin:0 !important;
+    white-space:nowrap !important;
+    font-size:17px !important;
+    line-height:1.15 !important;
+  }
+  .forecast-card .forecast-grid-five .label { display:none !important; }
+
 </style>
+<meta name="finca-guide-version" content="14.9">
 </head>
 <body>
 
@@ -628,10 +694,11 @@
 <nav>
   <button class="active" data-tab="today" aria-label="Today"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.5 1.5M17.6 17.6l1.5 1.5M2 12h2M20 12h2M4.9 19.1l1.5-1.5M17.6 6.4l1.5-1.5"/></svg></span>Today</button>
   <button data-tab="regels" aria-label="Rules"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><circle cx="12" cy="12.2" r=".8" fill="currentColor" stroke="none"/><path d="M12 15v2.7"/></svg></span>Rules</button>
-  <button data-tab="airco" aria-label="Airco"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M4.2 6.5l15.6 11M19.8 6.5l-15.6 11M8.5 4.5 12 7l3.5-2.5M8.5 19.5 12 17l3.5 2.5M3.5 10 7 12l-3.5 2M20.5 10 17 12l3.5 2"/></svg></span>Airco</button>
   <button data-tab="wifi" aria-label="WiFi"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M5 9.5a10.5 10.5 0 0 1 14 0"/><path d="M8 13a6 6 0 0 1 8 0"/><path d="M10.8 16.3a2 2 0 0 1 2.4 0"/><circle cx="12" cy="19" r=".7" fill="currentColor" stroke="none"/></svg></span>WiFi</button>
-  <button data-tab="tv" aria-label="TV"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span>TV</button>
+  <button data-tab="agenda" aria-label="This month"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/><circle cx="8" cy="14" r=".7" fill="currentColor" stroke="none"/><circle cx="12" cy="14" r=".7" fill="currentColor" stroke="none"/><circle cx="16" cy="14" r=".7" fill="currentColor" stroke="none"/></svg></span>This month</button>
   <button data-tab="activiteiten" aria-label="Explore"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>Explore</button>
+  <button data-tab="airco" aria-label="Airco"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M4.2 6.5l15.6 11M19.8 6.5l-15.6 11M8.5 4.5 12 7l3.5-2.5M8.5 19.5 12 17l3.5 2.5M3.5 10 7 12l-3.5 2M20.5 10 17 12l3.5 2"/></svg></span>Airco</button>
+  <button data-tab="tv" aria-label="TV"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span>TV</button>
   <button data-tab="nood" aria-label="Help"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M7.2 3.5 10 7.7 8.2 9.5c1.3 2.7 3.6 5 6.3 6.3l1.8-1.8 4.2 2.8c.5.3.7.9.5 1.4-.5 1.3-1.8 2.3-3.3 2.3C10.4 20.5 3.5 13.6 3.5 6.3c0-1.5 1-2.8 2.3-3.3.5-.2 1.1 0 1.4.5Z"/></svg></span>Help</button>
 </nav>
 
@@ -659,11 +726,11 @@
     <div class="card forecast-card">
       <h3>Today's forecast</h3>
       <div class="forecast-grid forecast-grid-five">
-        <div class="forecast-item"><div class="icon forecast-line-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0Z"/><path d="M12 11v6"/></svg></div><div class="value" id="wx-max-temp">…</div><div class="label">Expected high</div></div>
-        <div class="forecast-item"><div class="icon forecast-line-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17.5h10a4 4 0 0 0 .7-7.9A6 6 0 0 0 6.4 8.2 4.7 4.7 0 0 0 7 17.5Z"/><path d="M9 20l-1 2M13 20l-1 2M17 20l-1 2"/></svg></div><div class="value" id="wx-rain">…</div><div class="label">Chance of rain</div></div>
-        <div class="forecast-item"><div class="icon forecast-line-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div><div class="value" id="wx-max-uv">…</div><div class="label">Maximum UV</div></div>
-        <div class="forecast-item"><div class="icon forecast-line-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h16M6 14a6 6 0 0 1 12 0M12 3v4M5 8l2 2M19 8l-2 2"/><path d="M9 6l3-3 3 3"/></svg></div><div class="value" id="wx-sunrise">…</div><div class="label">Sunrise</div></div>
-        <div class="forecast-item"><div class="icon forecast-line-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h16M6 14a6 6 0 0 1 12 0M12 3v4M5 8l2 2M19 8l-2 2"/><path d="M9 4l3 3 3-3"/></svg></div><div class="value" id="wx-sunset">…</div><div class="label">Sunset</div></div>
+        <div class="forecast-item"><div class="icon forecast-line-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0Z"/><path d="M12 11v6"/></svg></div><div class="value" id="wx-max-temp">…</div></div>
+        <div class="forecast-item"><div class="icon forecast-line-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17.5h10a4 4 0 0 0 .7-7.9A6 6 0 0 0 6.4 8.2 4.7 4.7 0 0 0 7 17.5Z"/><path d="M9 20l-1 2M13 20l-1 2M17 20l-1 2"/></svg></div><div class="value" id="wx-rain">…</div></div>
+        <div class="forecast-item"><div class="icon forecast-line-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div><div class="value" id="wx-max-uv">…</div></div>
+        <div class="forecast-item"><div class="icon forecast-line-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h16M6 14a6 6 0 0 1 12 0M12 3v4M5 8l2 2M19 8l-2 2"/><path d="M9 6l3-3 3 3"/></svg></div><div class="value" id="wx-sunrise">…</div></div>
+        <div class="forecast-item"><div class="icon forecast-line-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h16M6 14a6 6 0 0 1 12 0M12 3v4M5 8l2 2M19 8l-2 2"/><path d="M9 4l3 3 3-3"/></svg></div><div class="value" id="wx-sunset">…</div></div>
       </div>
     </div>
 <div class="quick-actions">
@@ -686,8 +753,10 @@
       <h3>Tip of the week</h3>
       <p id="tip-of-week">Morning walk, afternoon in the sun ☀️ Autumn is arriving in Andalusia, but the days are still wonderfully mild. Mornings are perfect for walking. Around Pizarra, Álora and the Guadalhorce Valley you’ll find beautiful routes through olive groves, pine forests and hills with wonderful views. The Komoot app is an easy way to find a route that suits you, from a short morning walk to a longer hike. In the afternoon, relax by our pool or head to the coast for a few hours at the beach. A little local tip: at Finca Flamenco the sun disappears behind the mountain at around 17:30 at this time of year. At the coast you can usually enjoy the sunshine much longer, often until around 19:30. So on a beautiful autumn day: walk in the morning, relax in the afternoon. The best of both worlds.</p>
     </div>
+  </section>
 
-<h2 class="today-section-title">What's on · October 2026</h2>
+  <section id="agenda">
+    <h2 class="today-section-title">What's on · October 2026</h2>
     <p class="explore-intro">A selection of local events worth planning into your stay next month.</p>
     <div class="card event-card"><div class="event-place">2 – 4 October · Cártama</div><div class="event-date">Mercado Árabe</div><p>An Andalusian-Arabic market weekend with crafts, food, music and entertainment.</p></div>
     <div class="card event-card"><div class="event-place">3 October · Álora</div><div class="event-date">Día de las Sopas Perotas</div><p>A major local gastronomic celebration centred around Álora's traditional sopa perota.</p></div>
@@ -1231,6 +1300,10 @@
   Object.assign(I18N.de, {'Chance of rain':'Regenwahrscheinlichkeit'});
   Object.assign(I18N.es, {'Chance of rain':'Probabilidad de lluvia'});
 
+  Object.assign(I18N.nl, {'This month':'Deze maand'});
+  Object.assign(I18N.de, {'This month':'Diesen Monat'});
+  Object.assign(I18N.es, {'This month':'Este mes'});
+
 const SUPPORTED_LANGS = ['en','nl','de','es'];
   let currentLanguage = 'en';
 
@@ -1256,7 +1329,7 @@ const SUPPORTED_LANGS = ['en','nl','de','es'];
     document.querySelectorAll('#language-select option').forEach(o => { /* language codes remain universal */ });
     document.documentElement.lang = lang;
     document.title = {en:'Finca Flamenco — Guest guide',nl:'Finca Flamenco — Gastengids',de:'Finca Flamenco — Gästeführer',es:'Finca Flamenco — Guía para huéspedes'}[lang] || 'Finca Flamenco — Guest guide';
-    const navAria = {en:{today:'Today',regels:'Rules',airco:'Airco',wifi:'WiFi',tv:'TV',activiteiten:'Explore',nood:'Emergency'},nl:{today:'Vandaag',regels:'Huisregels',airco:'Airco',wifi:'WiFi',tv:'TV',activiteiten:'Ontdek',nood:'Noodhulp'},de:{today:'Heute',regels:'Hausregeln',airco:'Klima',wifi:'WLAN',tv:'TV',activiteiten:'Entdecken',nood:'Notfall'},es:{today:'Hoy',regels:'Normas',airco:'Clima',wifi:'WiFi',tv:'TV',activiteiten:'Explorar',nood:'Emergencias'}};
+    const navAria = {en:{today:'Today',regels:'Rules',airco:'Airco',wifi:'WiFi',agenda:'This month',tv:'TV',activiteiten:'Explore',nood:'Emergency'},nl:{today:'Vandaag',regels:'Huisregels',airco:'Airco',wifi:'WiFi',agenda:'Deze maand',tv:'TV',activiteiten:'Ontdek',nood:'Noodhulp'},de:{today:'Heute',regels:'Hausregeln',airco:'Klima',wifi:'WLAN',agenda:'Diesen Monat',tv:'TV',activiteiten:'Entdecken',nood:'Notfall'},es:{today:'Hoy',regels:'Normas',airco:'Clima',wifi:'WiFi',agenda:'Este mes',tv:'TV',activiteiten:'Explorar',nood:'Emergencias'}};
     document.querySelectorAll('nav button[data-tab]').forEach(b => b.setAttribute('aria-label', navAria[lang]?.[b.dataset.tab] || b.getAttribute('aria-label')));
     document.getElementById('language-select')?.setAttribute('aria-label', {en:'Language',nl:'Taal',de:'Sprache',es:'Idioma'}[lang]);
   }
