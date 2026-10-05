@@ -1,4 +1,4 @@
-const CACHE = 'finca-guide-v14.6';
+const CACHE = 'finca-guide-v14.7';
 const ASSETS = ['./','./index.html',
   './playa-los-alamos.jpg',
 './manifest.webmanifest','./icon-192.png','./icon-512.png','./header-finca.jpg'];
