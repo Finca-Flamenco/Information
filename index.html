@@ -672,7 +672,7 @@
   .forecast-card .forecast-grid-five .label { display:none !important; }
 
 </style>
-<meta name="finca-guide-version" content="15.1">
+<meta name="finca-guide-version" content="15.3">
 </head>
 <body>
 
@@ -742,6 +742,7 @@
       <p>Closed from 1 November until mid-March.</p>
     </div>
 
+    <div class="card" id="kitchen-today-card"><h3 id="kitchen-today-title">🍳 Outdoor kitchen &amp; BBQ</h3><p id="kitchen-today-text">Planning to use the outdoor kitchen, BBQ, oven or gas hob? Please arrange this with us in advance, preferably in the morning, so we can explain how everything works.</p><button type="button" id="kitchen-more-button" class="quick-action primary" data-open-tab="regels" style="margin-top:10px;cursor:pointer;">More information →</button></div>
     <div class="card airco-today-card">
       <h3 id="airco-today-title">❄️ Aircon &amp; heating</h3>
       <p><strong id="airco-today-range">Cooling: 22–25°C · Heating: 20–23°C</strong></p>
@@ -807,8 +808,18 @@
       <p>Allowed on the patio and at the outdoor bar. At the pool, only at the designated smoking table. Not allowed in the rooms — your own balcony is fine.</p>
     </div>
     <div class="card">
-      <h3>Outdoor bar and kitchen</h3>
-      <p>The trust bar works on a self-service basis: take your drink and honestly note what you've had. Settle up when you check out. The outdoor kitchen (with utensils, plates and cutlery) is free to use — please don't bring these items to your room.</p>
+      <h3 id="kitchen-bar-title">Outdoor bar</h3>
+      <p id="kitchen-bar-text">The trust bar works on a self-service basis: take your drink and honestly note what you've had. Settle up when you check out.</p>
+    </div>
+    <div class="card" id="kitchen-rules-card">
+      <h3 id="kitchen-rules-title">🍳 Outdoor kitchen, BBQ &amp; oven</h3>
+      <p id="kitchen-rules-intro">You're welcome to enjoy our outdoor kitchen, but please always arrange its use with us beforehand — preferably in the morning, as we may be away later in the day.</p>
+      <p><strong id="kitchen-rules-head-1">Before using the equipment</strong></p>
+      <p id="kitchen-rules-equipment">Please ask us to show you how the BBQ, oven and gas hob work, and where to find utensils and supplies. Do not operate this equipment without an introduction.</p>
+      <p><strong id="kitchen-rules-head-2">Dishes and utensils</strong></p>
+      <p id="kitchen-rules-dishes">There are no dishwashing facilities. Please place used dishes and cutlery in the washing-up tub by the bar. Help us keep washing-up to a minimum by using only the plates, bowls, knives and utensils you need.</p>
+      <p><strong id="kitchen-rules-head-3">The tap</strong></p>
+      <p id="kitchen-rules-tap">The tap is only for rinsing vegetables and washing hands, not for washing dishes. The water is collected in a bucket and reused to water our plants. Thank you for helping us save water! 🌿</p>
     </div>
     <div class="card">
       <h3>Own food and drinks</h3>
@@ -816,7 +827,7 @@
     </div>
     <div class="card">
       <h3>Barbecue and open fires</h3>
-      <p>Open fires or your own barbecues are not permitted. The outdoor kitchen and its BBQ are free to use.</p>
+      <p id="kitchen-bbq-text">Open fires or your own barbecues are not permitted. Please arrange use of our BBQ with us in advance and ask for instructions before lighting it.</p>
     </div>
     <div class="card">
       <h3>Pets</h3>
@@ -1396,6 +1407,16 @@ function renderAgenda2026(lang) {
  items.forEach((item,i)=>['place','name','desc'].forEach((field,j)=>{const el=document.getElementById('agenda-'+field+'-'+i);if(el){el.textContent=item[j];el.firstChild.__i18nOriginal=item[j];}}));
 }
 
+
+const KITCHEN_GUIDE = {"ids": ["kitchen-today-title", "kitchen-today-text", "kitchen-rules-title", "kitchen-rules-intro", "kitchen-rules-head-1", "kitchen-rules-equipment", "kitchen-rules-head-2", "kitchen-rules-dishes", "kitchen-rules-head-3", "kitchen-rules-tap", "kitchen-bar-title", "kitchen-bar-text", "kitchen-bbq-text"], "texts": {"en": ["🍳 Outdoor kitchen & BBQ", "Planning to use the outdoor kitchen, BBQ, oven or gas hob? Please arrange this with us in advance, preferably in the morning, so we can explain how everything works.", "🍳 Outdoor kitchen, BBQ & oven", "You're welcome to enjoy our outdoor kitchen, but please always arrange its use with us beforehand — preferably in the morning, as we may be away later in the day.", "Before using the equipment", "Please ask us to show you how the BBQ, oven and gas hob work, and where to find utensils and supplies. Do not operate this equipment without an introduction.", "Dishes and utensils", "There are no dishwashing facilities. Please place used dishes and cutlery in the washing-up tub by the bar. Help us keep washing-up to a minimum by using only the plates, bowls, knives and utensils you need.", "The tap", "The tap is only for rinsing vegetables and washing hands, not for washing dishes. The water is collected in a bucket and reused to water our plants. Thank you for helping us save water! 🌿", "Outdoor bar", "The trust bar works on a self-service basis: take your drink and honestly note what you have had. Settle up when you check out.", "Open fires or your own barbecues are not permitted. Please arrange use of our BBQ with us in advance and ask for instructions before lighting it."], "nl": ["🍳 Buitenkeuken & BBQ", "Wil je de buitenkeuken, BBQ, oven of het gasfornuis gebruiken? Overleg dit vooraf met ons, bij voorkeur ’s ochtends, zodat we kunnen uitleggen hoe alles werkt.", "🍳 Buitenkeuken, BBQ & oven", "Je kunt gebruikmaken van onze buitenkeuken, maar overleg dit altijd vooraf met ons — het liefst ’s ochtends, omdat we later op de dag niet altijd thuis zijn.", "Voor gebruik van de apparatuur", "Vraag ons eerst om uitleg over de BBQ, oven en het gasfornuis en waar alle benodigdheden liggen. Gebruik deze apparaten niet zonder voorafgaande uitleg.", "Servies en keukengerei", "Er is geen afwasmogelijkheid. Zet gebruikt servies en bestek in de afwasteil bij de bar. Gebruik zo min mogelijk borden, schalen, messen en ander keukengerei, zodat er niet onnodig veel afwas ontstaat.", "De kraan", "De kraan is alleen bedoeld om groenten af te spoelen en handen te wassen, niet om af te wassen. Het water wordt opgevangen in een emmer en hergebruikt voor onze planten. Bedankt voor het zuinig omgaan met water! 🌿", "Buitenbar", "De trustbar werkt op basis van zelfbediening: pak je drankje, noteer wat je gebruikt en reken af bij het uitchecken.", "Open vuur en eigen barbecues zijn niet toegestaan. Overleg het gebruik van onze BBQ vooraf met ons en vraag om uitleg voordat je deze aansteekt."], "de": ["🍳 Außenküche & Grill", "Möchten Sie die Außenküche, den Grill, den Backofen oder den Gasherd nutzen? Bitte sprechen Sie dies vorher mit uns ab, möglichst morgens, damit wir alles erklären können.", "🍳 Außenküche, Grill & Backofen", "Unsere Außenküche steht Ihnen gerne zur Verfügung. Bitte sprechen Sie die Nutzung vorher mit uns ab — möglichst morgens, da wir später am Tag nicht immer vor Ort sind.", "Vor der Benutzung", "Bitte lassen Sie sich von uns zeigen, wie Grill, Backofen und Gasherd funktionieren und wo sich die Utensilien befinden. Benutzen Sie die Geräte nicht ohne vorherige Einweisung.", "Geschirr und Küchenutensilien", "Es gibt keine Möglichkeit zum Geschirrspülen. Bitte stellen Sie benutztes Geschirr und Besteck in die Spülschüssel an der Bar. Verwenden Sie möglichst wenige Teller, Schüsseln, Messer und Utensilien, um unnötigen Abwasch zu vermeiden.", "Der Wasserhahn", "Der Wasserhahn dient nur zum Abspülen von Gemüse und zum Händewaschen, nicht zum Geschirrspülen. Das Wasser wird in einem Eimer aufgefangen und zum Gießen unserer Pflanzen wiederverwendet. Vielen Dank fürs Wassersparen! 🌿", "Außenbar", "Unsere Vertrauensbar funktioniert mit Selbstbedienung: Nehmen Sie ein Getränk, notieren Sie Ihren Verbrauch und bezahlen Sie beim Check-out.", "Offenes Feuer und eigene Grills sind nicht erlaubt. Bitte sprechen Sie die Nutzung unseres Grills vorher mit uns ab und lassen Sie sich vor dem Anzünden einweisen."], "es": ["🍳 Cocina exterior y barbacoa", "¿Quiere utilizar la cocina exterior, la barbacoa, el horno o los fogones de gas? Consúltelo antes con nosotros, preferiblemente por la mañana, para que podamos explicarle su funcionamiento.", "🍳 Cocina exterior, barbacoa y horno", "Puede disfrutar de nuestra cocina exterior, pero consulte siempre su uso con nosotros de antemano, preferiblemente por la mañana, ya que no siempre estamos en casa más tarde.", "Antes de utilizar los equipos", "Pídanos que le expliquemos cómo funcionan la barbacoa, el horno y los fogones de gas, y dónde están los utensilios. No utilice estos equipos sin recibir antes las instrucciones.", "Vajilla y utensilios", "No hay instalaciones para lavar los platos. Deje la vajilla y los cubiertos usados en la palangana junto a la barra. Utilice solo los platos, fuentes, cuchillos y utensilios necesarios para evitar generar demasiada vajilla sucia.", "El grifo", "El grifo es solo para enjuagar verduras y lavarse las manos, no para lavar platos. El agua se recoge en un cubo y se reutiliza para regar nuestras plantas. ¡Gracias por ahorrar agua! 🌿", "Bar exterior", "Nuestro bar de confianza funciona en autoservicio: coja su bebida, anote lo consumido y pague al salir.", "No se permiten fuegos abiertos ni barbacoas propias. Consulte previamente el uso de nuestra barbacoa y pida instrucciones antes de encenderla."]}};
+function renderKitchenGuide(lang) {
+ const values = KITCHEN_GUIDE.texts[lang] || KITCHEN_GUIDE.texts.en;
+ KITCHEN_GUIDE.ids.forEach((id,i) => {
+   const el = document.getElementById(id);
+   if (el) { el.textContent = values[i]; if(el.firstChild) el.firstChild.__i18nOriginal = values[i]; }
+ });
+}
+
 function setLanguage(lang) {
     if (!SUPPORTED_LANGS.includes(lang)) lang='en';
     currentLanguage = lang;
@@ -1405,6 +1426,9 @@ function setLanguage(lang) {
     translateTree(document.body, lang);
     renderAircoToday(lang);
     renderAgenda2026(lang);
+    renderKitchenGuide(lang);
+    const kitchenMore = document.getElementById('kitchen-more-button');
+    if (kitchenMore) kitchenMore.textContent = ({en:'More information →',nl:'Meer informatie →',de:'Weitere Informationen →',es:'Más información →'})[lang] || 'More information →';
     updateGreeting();
     renderDaily();
   }
@@ -1425,7 +1449,13 @@ function setLanguage(lang) {
   }
 
   document.querySelectorAll('nav button').forEach(btn => btn.addEventListener('click', () => openTab(btn.dataset.tab)));
-  document.querySelectorAll('[data-open-tab]').forEach(btn => btn.addEventListener('click', () => openTab(btn.dataset.openTab)));
+  document.querySelectorAll('[data-open-tab]').forEach(btn => btn.addEventListener('click', () => {
+    openTab(btn.dataset.openTab);
+    if (btn.id === 'kitchen-more-button') {
+      const kitchenRules = document.getElementById('kitchen-rules-card');
+      if (kitchenRules) requestAnimationFrame(() => kitchenRules.scrollIntoView({behavior:'smooth',block:'start'}));
+    }
+  }));
 
   document.querySelectorAll('.explore-tab').forEach(btn => btn.addEventListener('click', () => {
     document.querySelectorAll('.explore-tab').forEach(b => b.classList.remove('active'));
