@@ -1,4 +1,4 @@
-const CACHE = 'finca-guide-v15.0';
+const CACHE = 'finca-guide-v15.4';
 const ASSETS = [
   './',
   './index.html',
