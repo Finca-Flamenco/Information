@@ -672,7 +672,7 @@
   .forecast-card .forecast-grid-five .label { display:none !important; }
 
 </style>
-<meta name="finca-guide-version" content="15.7">
+<meta name="finca-guide-version" content="15.8">
 </head>
 <body>
 
@@ -750,9 +750,9 @@
       <p><span id="airco-today-home">Use it consciously, just as you would at home. 🌿</span> <strong id="airco-today-off">Please turn it off when you're not in the room.</strong></p>
     </div>
 
-    <div class="card tip-week-card">
-      <h3>Tip of the week</h3>
-      <p id="tip-of-week">Morning walk, afternoon in the sun ☀️ Autumn is arriving in Andalusia, but the days are still wonderfully mild. Mornings are perfect for walking. Around Pizarra, Álora and the Guadalhorce Valley you’ll find beautiful routes through olive groves, pine forests and hills with wonderful views. The Komoot app is an easy way to find a route that suits you, from a short morning walk to a longer hike. In the afternoon, relax by our pool or head to the coast for a few hours at the beach. A little local tip: at Finca Flamenco the sun disappears behind the mountain at around 17:30 at this time of year. At the coast you can usually enjoy the sunshine much longer, often until around 19:30. So on a beautiful autumn day: walk in the morning, relax in the afternoon. The best of both worlds.</p>
+    <div class="card winter-message-card">
+      <h3 id="winter-message-title">Winter in Andalusia ☀️</h3>
+      <p id="winter-message-text">Enjoy the quieter side of Andalusia. Mild afternoons, peaceful villages, beautiful walks and time to slow down. Explore our personal favourites in the Discover section and make the most of your stay.</p>
     </div>
   </section>
 
@@ -1444,6 +1444,20 @@ function renderHiddenGems(lang) {
   const booking=document.getElementById('hermozia-book'); if(booking) booking.textContent=({en:'View workshop & book →',nl:'Workshop bekijken & reserveren →',de:'Workshop ansehen & buchen →',es:'Ver taller y reservar →'}[lang] || 'View workshop & book →');
 }
 
+const WINTER_MESSAGE = {
+  en: ['Winter in Andalusia ☀️', 'Enjoy the quieter side of Andalusia. Mild afternoons, peaceful villages, beautiful walks and time to slow down. Explore our personal favourites in the Discover section and make the most of your stay.'],
+  nl: ['Winter in Andalusië ☀️', 'Geniet van de rustige kant van Andalusië. Zachte middagen, sfeervolle dorpen, prachtige wandelingen en alle tijd om te ontspannen. Ontdek onze persoonlijke favorieten onder Ontdek en haal het mooiste uit je verblijf.'],
+  de: ['Winter in Andalusien ☀️', 'Genieße die ruhige Seite Andalusiens. Milde Nachmittage, beschauliche Dörfer, wunderschöne Spaziergänge und Zeit zum Entspannen. Entdecke unsere persönlichen Favoriten unter Entdecken und genieße deinen Aufenthalt.'],
+  es: ['Invierno en Andalucía ☀️', 'Disfruta del lado más tranquilo de Andalucía. Tardes suaves, pueblos con encanto, bonitos paseos y tiempo para relajarte. Descubre nuestros lugares favoritos en la sección Descubrir y aprovecha al máximo tu estancia.']
+};
+function renderWinterMessage(lang) {
+  const content = WINTER_MESSAGE[lang] || WINTER_MESSAGE.en;
+  for (const [id, value] of [['winter-message-title',content[0]],['winter-message-text',content[1]]]) {
+    const el = document.getElementById(id);
+    if (el) { el.textContent = value; if (el.firstChild) el.firstChild.__i18nOriginal = value; }
+  }
+}
+
 function setLanguage(lang) {
     if (!SUPPORTED_LANGS.includes(lang)) lang='en';
     currentLanguage = lang;
@@ -1455,6 +1469,7 @@ function setLanguage(lang) {
     renderAgenda2026(lang);
     renderKitchenGuide(lang);
     renderHiddenGems(lang);
+    renderWinterMessage(lang);
     const kitchenMore = document.getElementById('kitchen-more-button');
     if (kitchenMore) kitchenMore.textContent = ({en:'More information →',nl:'Meer informatie →',de:'Weitere Informationen →',es:'Más información →'})[lang] || 'More information →';
     updateGreeting();
